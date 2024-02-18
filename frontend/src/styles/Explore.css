@@ -1,0 +1,198 @@
+/* Explore.css */
+
+.explore_section {
+	padding: 50px 0;
+	background: #261d16; /* Dark theme background */
+}
+
+.explore_title {
+	font-family: 'Oxanium', cursive;
+	font-size: 4.5rem; /* Adjust the size as needed */
+	color: #f5fbf2; /* Set the color */
+	text-align: center; /* Center the title */
+	margin-bottom: 60px; /* Space below the title */
+}
+
+.nft-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 24px;
+	justify-content: center;
+	align-items: start; /* Align grid items to the start of the grid area */
+}
+
+.nft-card {
+	background: #110C06; /* Card background color */
+	border-radius: 20px; /* Rounded corners for the card */
+	overflow: hidden;
+	display: flex;
+	flex-direction: column; /* Stack image and info on top of each other */
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
+	transition: transform 0.3s ease;
+}
+
+.nft-card:hover {
+	transform: translateY(-5px);
+}
+
+/* Image container with fixed aspect ratio */
+.nft-card .image-container {
+	width: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.nft-card .image-container::before {
+	content: '';
+	display: block;
+	padding-top: 100%;
+}
+
+.nft-card .image-container img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover; /* Cover the space without stretching */
+}
+
+.nft-info {
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	color: #f5fbf2;
+	flex-grow: 1; /* Expand to fill the available space in the flex container */
+}
+
+.nft-info h3 {
+	font-family: 'Oxanium', cursive;
+	font-size: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.nft-info .artist {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 1rem;
+}
+
+.nft-info .artist img {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+}
+
+.nft-info .artist .wallet-address {
+	font-family: 'Work Sans', sans-serif;
+	font-size: 0.8rem;
+	color: #9b9e9a;
+}
+
+.bid-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+
+.bid-info .current-bid {
+	font-family: 'Work Sans', sans-serif;
+	color: #9b9e9a;
+	font-size: 0.8rem;
+}
+
+.bid-info .price {
+	font-family: 'Work Sans', sans-serif;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #ffce4e;
+}
+
+.nft-card .place-bid {
+	background: #ffce4e;
+	color: #261d16;
+	text-transform: uppercase;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	display: block;
+	margin: 0 auto 20px;
+	text-align: center;
+	font-weight: bold;
+	max-width: 200px;
+}
+
+.explore_section p {
+	font-family: 'Work Sans', sans-serif; /* Consistent font for readability */
+	font-size: 1.5rem; /* Adequate size for information */
+	color: #f5fbf2; /* Light color for contrast against the dark background */
+	text-align: center; /* Center alignment for better visual appeal */
+	margin-bottom: 20px; /* Spacing below each paragraph */
+}
+
+/* Responsive design adjustments */
+@media (max-width: 1024px) {
+	/* Styles for tablets and smaller desktops */
+	.nft-grid {
+		grid-template-columns: repeat(2, 1fr); /* Two cards per row */
+	}
+}
+
+@media (max-width: 768px) {
+	.explore_title {
+		font-size: 3.5rem; /* Smaller font size for smaller devices */
+	}
+	/* Styles for landscape phones and smaller tablets */
+	.nft-grid {
+		grid-template-columns: 1fr; /* Single card per row */
+	}
+	.explore-section p {
+		font-size: 1rem; /* Slightly smaller font size on smaller screens */
+	}
+
+	.nft-info h3,
+	.nft-info .artist .wallet-address,
+	.bid-info .current-bid,
+	.bid-info .price {
+		/* Adjust font sizes for readability on smaller devices */
+		font-size: smaller;
+	}
+
+	.nft-card .place-bid {
+		/* Full width button on smaller screens */
+		width: calc(100% - 40px); /* Subtracting padding */
+		padding: 12px 20px;
+	}
+}
+
+@media (max-width: 480px) {
+	.explore_title {
+		font-size: 2.5rem; /* Even smaller font size for mobile phones */
+	}
+	/* Styles for portrait phones */
+	.nft-info {
+		padding: 15px; /* Slightly reduce padding */
+	}
+
+	.nft-info h3 {
+		font-size: 1.2rem; /* Smaller font size for NFT titles */
+	}
+
+	.explore-section p {
+		font-size: 0.9rem; /* Slightly smaller font size on smaller screens */
+	}
+
+	.nft-info .artist .wallet-address,
+	.bid-info .current-bid,
+	.bid-info .price {
+		font-size: 0.7rem; /* Smaller font size for the rest of the text */
+	}
+
+	.nft-card .place-bid {
+		font-size: 0.9rem; /* Adjust button text size */
+		padding: 10px; /* Adjust button padding */
+	}
+}

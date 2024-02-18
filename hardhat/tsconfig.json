@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"target": "ES2018",
+		"module": "commonjs",
+		"strict": true,
+		"esModuleInterop": true,
+		"outDir": "dist",
+		"noImplicitAny": true
+	},
+	"include": ["./scripts/**/*"],
+	"files": [
+		"./node_modules/@types/node/index.d.ts",
+		"./node_modules/@types/mocha/index.d.ts",
+		"./node_modules/@types/chai/index.d.ts"
+	]
+}

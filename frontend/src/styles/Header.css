@@ -1,0 +1,117 @@
+.header {
+	background: transparent;
+	margin-bottom: 139px;
+}
+
+.logo img {
+	width: 66px;
+	height: auto;
+}
+
+.header_section {
+	padding: 37px 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.menu_section {
+	display: flex;
+	align-items: center;
+}
+
+.navigation ul,
+.hamburger_menu_navigation ul {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	gap: 4rem;
+	margin: 0; 
+	padding: 0; 
+}
+
+.header_btn {
+	color: #e7b226;
+	font-family: 'Work Sans';
+	font-size: 18px;
+	font-weight: 600;
+	padding: 22px 30px;
+	border: 1px solid #e7b226;
+	transition: 0.5s;
+}
+
+.header_btn:hover,
+.header_btn:focus {
+	background-color: #e7b226;
+	color: #f5fbf2;
+}
+
+
+.nav_list {
+	transition: 0.5s;
+	text-decoration: none; 
+}
+
+.nav_list:hover,
+.nav_list:focus {
+	color: #e7b226;
+}
+
+.humburger {
+	color: #e7b226;
+	font-size: 32px;
+	cursor: pointer;
+}
+
+.hamburger_menu {
+	display: none;
+}
+
+#menu {
+	display: none;
+}
+
+.hamburger_menu_navigation ul {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	padding: 0; /* Убираем внутренние отступы для списка */
+}
+
+.hamburger_menu_navigation {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 300px; /* Ширина меню */
+	height: 100vh;
+	background: #110C06;
+	z-index: 2;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	transform: translateX(-100%);
+	transition: transform 0.5s ease;
+}
+
+.hamburger_menu_navigation .header_btn {
+	text-align: center;
+	display: inline-block;
+}
+
+.hamburger_menu_navigation.open {
+	transform: translateX(0); /* Show menu when it has the class "open" */
+}
+
+.close_button {
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	font-size: 44px;
+	cursor: pointer;
+	color: #e7b226;
+}
+
+#menu:checked ~ .hamburger_menu_navigation {
+	left: 0;
+}
