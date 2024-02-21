@@ -36,3 +36,8 @@ main()
 		console.error('Error encountered during contract deployment:', error)
 		process.exit(1)
 	})
+
+// Deploying contracts with the account: 0x77221Aa68406a5210716719Df410e782e2ec22dB
+// Account balance: 956658356820650801
+// Marketplace deployed to: 0x762EA42e6EE6dc28F22e71B079Ac040628FE68C2
+// Contract address and ABI saved to ArtCollectiveMarket.json

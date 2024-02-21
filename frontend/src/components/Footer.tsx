@@ -1,6 +1,4 @@
-import React from "react";
 import "../styles/Footer.css";
-// import { Button } from "./Button";
 import { Link } from "react-router-dom";
 
 function Footer() {
@@ -21,7 +19,7 @@ function Footer() {
               type="email"
               placeholder="Your Email"
             />
-            {/* <Button buttonStyle="btn--outline">Subscribe</Button> */}
+            <button className="btn btn--medium ">Submit</button>
           </form>
         </div>
       </section>
@@ -29,9 +27,7 @@ function Footer() {
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
             <h2>About Us</h2>
-            <Link to="/sign-up">How it works</Link>
-            <Link to="/">Testimonials</Link>
-            <Link to="/">Careers</Link>
+            <Link to="/">How it works</Link>
             <Link to="/">Investors</Link>
             <Link to="/">Terms of Service</Link>
           </div>
@@ -46,7 +42,6 @@ function Footer() {
         <div className="footer-link-wrapper">
           <div className="footer-link-items">
             <h2>Videos</h2>
-            <Link to="/">Submit Video</Link>
             <Link to="/">Ambassadors</Link>
             <Link to="/">Agency</Link>
             <Link to="/">Influencer</Link>
@@ -64,8 +59,7 @@ function Footer() {
         <div className="social-media-wrap">
           <div className="footer-logo">
             <Link to="/" className="social-logo">
-              TRVL
-              <i className="fab fa-typo3" />
+              LOGO
             </Link>
           </div>
           <small className="website-rights">TRVL © 2020</small>

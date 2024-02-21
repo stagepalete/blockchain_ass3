@@ -25,7 +25,7 @@ contract ArtCollectiveMarket is ERC721URIStorage {
     event ArtworkListed(uint256 indexed tokenId, address indexed seller, uint256 price);
     event ArtworkPurchased(uint256 indexed tokenId, address indexed buyer, uint256 price);
     event ArtworkTransferred(uint256 indexed tokenId, address indexed from, address indexed to);
-    event ListingFeeChanged(uint256 newFee); // New event
+    event NFTPriceChanged(uint256 indexed tokenId, uint256 newPrice); // New event
     event BalanceWithdrawn(address indexed owner, uint256 amount); // New event
 
     constructor() ERC721("ArtCollective", "ARTC") {
@@ -109,18 +109,14 @@ contract ArtCollectiveMarket is ERC721URIStorage {
         emit ArtworkTransferred(tokenId, seller, msg.sender);
     }
 
-    function changeListingFee(uint256 newFee) external {
-        require(msg.sender == owner, "Only the owner can change the listing fee");
-        listingFee = newFee;
-        emit ListingFeeChanged(newFee); // Emitting the event
+
+
+   function changeNFTPrice(uint256 tokenId, uint256 newPrice) external {
+    require(idToArtwork[tokenId].owner == msg.sender, "Only the owner can change the NFT price");
+    idToArtwork[tokenId].price = newPrice;
+    emit NFTPriceChanged(tokenId, newPrice); // Emitting the event
     }
 
-    function withdrawBalance() external {
-        require(msg.sender == owner, "Only the owner can withdraw balance");
-        uint256 balance = address(this).balance;
-        owner.transfer(balance);
-        emit BalanceWithdrawn(owner, balance); // Emitting the event
-    }
 
     // Functions inherited from ERC721 contract
 
@@ -133,23 +129,23 @@ contract ArtCollectiveMarket is ERC721URIStorage {
     address from,
     address to,
     uint256 tokenId
-) external override {
-    require(_isApprovedOrOwner(_msgSender(), tokenId), "Transfer caller is not owner nor approved");
-    _transfer(from, to, tokenId);
-}
+    ) external override {
+        require(_isApprovedOrOwner(_msgSender(), tokenId), "Transfer caller is not owner nor approved");
+        _transfer(from, to, tokenId);
+    }
 
-function approve(address to, uint256 tokenId) external override {
-    address ownerAddress = ownerOf(tokenId);
-    require(to != ownerAddress, "Cannot approve to yourself");
-    require(_msgSender() == ownerAddress || isApprovedForAll(ownerAddress, _msgSender()), "Approve caller is not owner nor approved for all");
-    _approve(to, tokenId);
-    emit Approval(ownerAddress, to, tokenId);
-}
+    function approve(address to, uint256 tokenId) external override {
+        address ownerAddress = ownerOf(tokenId);
+        require(to != ownerAddress, "Cannot approve to yourself");
+        require(_msgSender() == ownerAddress || isApprovedForAll(ownerAddress, _msgSender()), "Approve caller is not owner nor approved for all");
+        _approve(to, tokenId);
+        emit Approval(ownerAddress, to, tokenId);
+    }
 
-function setApprovalForAll(address operator, bool approved) external override {
-    require(operator != _msgSender(), "ERC721: approve to caller");
-    _setApprovalForAll(_msgSender(), operator, approved);
-    emit ApprovalForAll(_msgSender(), operator, approved);
-}
+    function setApprovalForAll(address operator, bool approved) external override {
+        require(operator != _msgSender(), "ERC721: approve to caller");
+        _setApprovalForAll(_msgSender(), operator, approved);
+        emit ApprovalForAll(_msgSender(), operator, approved);
+    }
 
 }
